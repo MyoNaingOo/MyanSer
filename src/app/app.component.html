@@ -1,0 +1,133 @@
+@if (data) {
+<nav class="bg-dark-light">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
+    <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{
+        data.header_titel
+        }}</span>
+    </a>
+    <button type="button" class=" outline-none  ">
+      <span class="md:mr-4 p-3 " (click)="dark()"> <fa-icon [icon]="modeicon"></fa-icon></span>
+    </button>
+  </div>
+</nav>
+<main class="p-3">
+
+  <!-- app img and title -->
+  <div class="container w-full space-x-2 flex flex-row items-center">
+    <img [src]="data.apk_image" alt="" class="border border-yellow-300 shadow-md w-20 h-20" />
+    <h1 class="text-xl">{{ data.title }}</h1>
+  </div>
+
+  <div class="w-full m-3 p-3 justify-center flex">
+
+    <a [href]="data.apk_link" class="bg-yellow-300  w-52 text-center py-2 rounded-md block shadow-md">Download</a>
+  </div>
+
+
+
+
+  <!-- images -->
+  <div id="default-carousel" class="relative w-full  shadow-md" data-carousel="slide">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+
+      @for (image of data.images; track $index) {
+
+      <!-- Item -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+        <img [src]="image" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+      </div>
+      }
+
+    </div>
+    <!-- Slider indicators -->
+    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+
+      @for (image of data.images; track $index) {
+
+      <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
+        data-carousel-slide-to="0"></button>
+
+      }
+
+    </div>
+    <!-- Slider controls -->
+    <button type="button"
+      class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+      data-carousel-prev>
+      <span
+        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M5 1 1 5l4 4" />
+        </svg>
+        <span class="sr-only">Previous</span>
+      </span>
+    </button>
+    <button type="button"
+      class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+      data-carousel-next>
+      <span
+        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="m1 9 4-4-4-4" />
+        </svg>
+        <span class="sr-only">Next</span>
+      </span>
+    </button>
+  </div>
+
+
+
+  <div class="mt-5 items-center ">
+
+    <div class="md:hidden">
+      <youtube-player class=" block  " height="210" width="360" [videoId]="data.video_link"></youtube-player>
+
+    </div>
+
+    <div class="hidden md:block">
+      <youtube-player class=" block  " [videoId]="data.video_link"></youtube-player>
+
+    </div>
+
+    <p>
+      {{ data.description}}
+    </p>
+  </div>
+
+
+
+
+
+
+
+
+</main>
+
+<footer class="justify-center flex items-center bg-yellow-300 dark:bg-yellow-500 py-1">
+  <p>2024 &copy;</p>
+
+</footer>
+}@else {
+
+<div class="w-full h-screen flex justify-center items-center">
+  <div role="status">
+    <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-yellow-400"
+      viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+        fill="currentColor" />
+      <path
+        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+        fill="currentFill" />
+    </svg>
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+}

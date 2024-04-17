@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  overflow-x: hidden;
+  @apply bg-gray-200 dark:bg-gray-900 text-black dark:text-white;
+}
+img {
+  max-inline-size: 100%;
+  block-size: auto;
+}
